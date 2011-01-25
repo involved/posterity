@@ -1,0 +1,14 @@
+<h1>News</h1>
+<%- if @posts.empty? -%>
+	<em>No news at this time</em>
+<%- end -%>
+
+<%= page_entries_info(@posts).html_safe %>
+
+<%- @posts.each do |post| -%>
+	<hr />
+	<%= render :partial => "post", :locals => {:full => false, :post => post} %>
+<%- end -%>
+<p>
+	<%= will_paginate @posts %>
+</p>

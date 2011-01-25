@@ -1,0 +1,29 @@
+<h1>Posts</h1>
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Author</th>
+		<th>&nbsp;</th>
+	</tr>
+	<%- @posts.each do |post| -%>
+		<tr>
+			<td><%= post.title %></td>
+			<td><%= post.author %></td>
+			<td>
+				<%- if post.published_at -%>
+					<%= link_to "Show", article_path(:year => post.published_at.year, :month => post.published_at.month, :day => post.published_at.day, :id => post.to_param) %>
+				<%- else -%>
+					<%= link_to "Publish", post_publish_path(post) %>
+				<%- end -%>
+				<%= link_to "Edit", edit_manage_post_path(post) %>
+				<%= link_to "Delete", manage_post_path(post), :method => :delete, :confirm => "Are you sure?" %>
+			</td>
+		</tr>
+	<%- end -%>
+</table>
+
+<p>
+	<%= will_paginate @posts %>
+</p>
+
+<%= link_to "New post", new_manage_post_path %>

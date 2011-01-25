@@ -1,0 +1,20 @@
+<%- full ||= true -%>
+<h1><%= link_to post.title, article_path(:year => post.published_at.year, :month => post.published_at.month, :day => post.published_at.day, :id => post.to_param) %></h1>
+<div class="byline">
+	<em>Written by <%= link_to post.author, post_by_path(post.author) %>, on <%= post.published_at.strftime("%d, %B %Y") %></em>
+</div>
+<div class="summary">
+	<%- if full -%>
+		<%= post.content.md %>
+	<%- else -%>
+		<%= post.content.smart_summary(:sentences => 10, :letters => 1000) %>
+		<%= link_to "&rsaquo; read more".html_safe, article_path(:year => post.published_at.year, :month => post.published_at.month, :day => post.published_at.day, :id => post.to_param) %>
+	<%- end -%>
+</div>
+<div class="tags">
+	<%- post.tags.each do |tag| -%>
+		<span class="tag">
+			<%= link_to tag, tagged_path(CGI.escape(tag.to_s)) %>
+		</span>
+	<%- end -%>
+</div>

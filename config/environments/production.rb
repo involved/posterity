@@ -46,4 +46,7 @@ Posterity::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  # Devise action mailer defaults
+  config.action_mailer.default_url_options = { :host => 'involved.com.au' }
 end

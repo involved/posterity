@@ -2,9 +2,15 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
 
+gem 'inherited_resources'
 gem 'simple_form'
 gem 'rdiscount'
 gem 'carrierwave'
+gem 'acts-as-taggable-on'
+gem 'friendly_id', '~> 3.2'
+gem 'will_paginate'
+gem 'devise'
+gem 'faker'
 
 group :development do
   gem 'nifty-generators'

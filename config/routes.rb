@@ -1,4 +1,21 @@
 Posterity::Application.routes.draw do
+  
+  namespace 'manage' do
+    resources 'posts' do
+      get 'publish'
+      get 'unpublish'
+    end
+  end
+  
+  # posts
+  match 'news/tagged/:tag' => 'posts#index', :as => 'tagged'
+  match 'news/author' => 'posts#index', :as => 'post_by'
+  match 'news/:year/:month/:day/:id' => 'posts#show', :as => 'article'
+  match 'news/:year(/:month(/:day))' => 'posts#index'
+  match 'news' => 'posts#index', :as => 'news'
+    
+  root :to => 'posts#index'
+    
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
