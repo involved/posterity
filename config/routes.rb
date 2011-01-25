@@ -5,7 +5,7 @@ Posterity::Application.routes.draw do
       get 'publish'
       get 'unpublish'
     end
-    resources 'pages'
+    resources :users
   end
   
   # posts
@@ -15,9 +15,9 @@ Posterity::Application.routes.draw do
   match 'news/:year(/:month(/:day))' => 'posts#index'
   match 'news' => 'posts#index', :as => 'news'
   
-  # pages
-  match '/:group/:slug' => 'pages#show', :as => 'page'
-    
+  # users
+  devise_for :users
+  
   root :to => 'posts#index'
     
   # The priority is based upon order of creation:

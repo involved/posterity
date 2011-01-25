@@ -1,0 +1,20 @@
+<h1>Users</h1>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Email</th>
+		<th>&nbsp;</th>
+	</tr>
+	<tr>
+		<%- @users.each do |user| -%>
+			<td><%= user.to_s %></td>
+			<td><%= user.email %></td>
+			<td>
+				<%= link_to "Edit", edit_manage_user_path(user) %>
+				<%= link_to "Delete", manage_user_path(user), :method => :delete, :confirm => "Are you sure?" %>
+			</td>
+		<%- end -%>
+	</tr>
+</table>
+
+<%= link_to "New user", new_manage_user_path %>

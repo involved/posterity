@@ -1,4 +1,7 @@
 Management console -
-<%= link_to "Pages", manage_pages_path %>
 <%= link_to "Posts", manage_posts_path %>
-<%= link_to "Users", manage_posts_path %>
+<%= link_to "Users", manage_users_path %>
+
+Welcome <%= current_user.first_name %>!
+<%= link_to "Edit profile", edit_manage_user_path(current_user) %>
+<%= link_to "Sign out", destroy_user_session_path %>

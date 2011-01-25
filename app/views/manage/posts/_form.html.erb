@@ -1,7 +1,11 @@
-<% simple_form_for [:manage, @post] do |f| %>
+<%= simple_form_for [:manage, @post] do |f| %>
 	<%= f.input :title %>
+	<p>
+		By: <%= @post.author || current_user.to_s %>
+	</p>
 	<%= f.input :tag_list %>
-	<%= f.input :author %>
+	<%= f.input :author, :input_html => {:value => @post.author || current_user.to_s}, :as => :hidden %>
 	<%= f.input :content %>
-	<%= f.submit %>
+	<%= f.submit "Save draft" %>
+	<%= f.submit "Publish", :name => "publish" %>
 <% end %>

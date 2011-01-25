@@ -1,6 +1,9 @@
 class Manage::ManageController < InheritedResources::Base
   layout 'manage'
   
+  before_filter :no_index
+  before_filter :authenticate_user!
+  
   # Override redirects after resource creation
   def create
     create! do |success, failure|
