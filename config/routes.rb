@@ -5,6 +5,7 @@ Posterity::Application.routes.draw do
       get 'publish'
       get 'unpublish'
     end
+    resources 'pages'
   end
   
   # posts
@@ -13,6 +14,9 @@ Posterity::Application.routes.draw do
   match 'news/:year/:month/:day/:id' => 'posts#show', :as => 'article'
   match 'news/:year(/:month(/:day))' => 'posts#index'
   match 'news' => 'posts#index', :as => 'news'
+  
+  # pages
+  match '/:group/:slug' => 'pages#show', :as => 'page'
     
   root :to => 'posts#index'
     
