@@ -3,12 +3,45 @@
 	<em>No news at this time</em>
 <%- end -%>
 
-<%= page_entries_info(@posts).html_safe %>
+<div class="page_details">
+	<%= page_entries_info(@posts).html_safe %> <%= "tagged with <strong>#{params[:tag]}</strong>".html_safe if params[:tag] %>
+</div>
 
 <%- @posts.each do |post| -%>
-	<hr />
-	<%= render :partial => "post", :locals => {:full => false, :post => post} %>
+	<%= render :partial => "post", :locals => {:show_full_post => false, :post => post} %>
 <%- end -%>
 <p>
 	<%= will_paginate @posts %>
 </p>
+
+<%- content_for :sidebar do -%>
+	<div class="widget first">
+		<h2>Search</h2>
+		<div class="clearfix">
+			<%= simple_form_for :search, :url => news_path, :html => {:method => :get} do |f| %>
+				<%= f.input :q, :label => nil, :required => false, :input_html => {:name => "q", :class => "text"} %>
+				<%= f.submit "&rsaquo;".html_safe, :class => "button", :name => nil %>
+			<% end %>
+		</div>
+	</div>
+	
+	<div class="widget">
+		<h2>Popular Tags</h2>
+		<div>
+			<% tag_cloud(Post.tag_counts_on(:tags), %w(tag_1 tag_2 tag_3 tag_4)) do |tag, css_class| %>
+				<%= link_to tag.name, tagged_path(CGI.escape(tag.to_s)), :class => css_class if tag.count > 1 %>
+			<% end %>
+		</div>
+	</div>
+	
+	<div class="widget">
+		<h2>Archive</h2>
+		<div>
+			<ul>
+				<%- Post.archive_dates.each do |archive_date| -%>
+					<li><%= link_to archive_date[:date].strftime("%B, %Y"), url_for(:action => "index", :year => archive_date[:date].year, :month => archive_date[:date].month) %> (<%= archive_date[:count] %>)</li>
+				<%- end -%>
+			</ul>
+		</div>
+	</div>
+<%- end -%>

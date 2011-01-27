@@ -10,7 +10,7 @@ Posterity::Application.routes.draw do
   
   # posts
   match 'news/tagged/:tag' => 'posts#index', :as => 'tagged'
-  match 'news/author' => 'posts#index', :as => 'post_by'
+  match 'news/author/:name' => 'posts#index', :as => 'post_by'
   match 'news/:year/:month/:day/:id' => 'posts#show', :as => 'article'
   match 'news/:year(/:month(/:day))' => 'posts#index'
   match 'news' => 'posts#index', :as => 'news'
