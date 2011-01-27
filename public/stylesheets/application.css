@@ -101,13 +101,36 @@ header .container{
 	background: url(/images/posterity/header_background.png) no-repeat left bottom;
 }
 
+.flash{
+	margin: 10px 0;
+}
+
+.flash .alert{
+	border: 1px solid #EAA;
+	background: #FDD;
+	padding: 10px 20px;
+	color: #633;	
+	
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
 #login{
 	width: 400px;
 	margin: 50px auto;
 }
 
-#login input{
-	width: 360px;
+#login #logo{
+	margin-bottom: 30px;
+}
+
+#login .input.string input, #login .input.password input{
+	width: 400px;
+}
+
+#login .forgot_password{
+	margin-top:6px;
 }
 
 #logo{
@@ -170,19 +193,33 @@ label{
 	font-weight: bold;
 }
 
-input, textarea{
+form div{
+	margin: 20px 0;
+}
+
+.input.string input, .input.password input{
 	width: 500px;
 	border: 1px solid #888;
 	font-size: 24px;
 	padding: 4px;
-}
-
-textarea{
-	
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 }
 
 input.button{
-	
+	color: #FFF;
+	height: 30px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-shadow: 0px -1px 0px #333;
+	filter: dropshadow(color=#333333,offX=0,offY=1);
+	background: url(/images/posterity/button_blue_sprite.png) repeat-x;
+	border: 0;
+	padding: 0 20px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 }
 
 .post{
@@ -269,17 +306,6 @@ aside .widget form input.button{
 	float:left;
 }
 
-a.button.blue{
-	background: url(/images/posterity/button_blue_sprite.png) repeat-x;
-	font-size: 16px;
-	padding: 4px 20px 6px 20px;
-}
-
-a.button.blue:hover{
-	background: url(/images/posterity/button_blue_sprite.png) repeat-x 0px -30px;
-}
-
-
 .pagination .disabled, .pagination .current, .pagination a{
 	color: #333;
 	background: #EEE;
@@ -322,7 +348,8 @@ a.button.blue:hover{
 .columns.four .col.span_3		{ width: 680px; }
 .columns.four .col.span_4		{ width: 920px; }
 
-
+.left{float:left;}
+.right{float:right;}
 
 
 

@@ -10,9 +10,13 @@
   <body>
 		<div id="login">
 			<%= render :partial => "shared/logo" %>
-			<% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
+			<%- unless flash.empty? -%>
+				<div class="flash">
+					<% flash.each do |name, msg| %>
+        		<%= content_tag :div, msg, :class => "#{name}" %>
+   				<% end %>
+				</div>
+			<%- end -%>
 			<%= yield %>
 		</div>
   </body>
