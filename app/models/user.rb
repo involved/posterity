@@ -32,4 +32,8 @@ class User < ActiveRecord::Base
   def role_options
     ["manager", "editor", "author"]
   end
+  
+  def avatar_url
+    nil
+  end
 end

@@ -8,18 +8,46 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="container">
-			<%= render :partial => "manage/shared/navigation" %>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
-			<hr />
-			<footer>
-				Powered by Posterity
+		<header>
+			<div class="container clearfix">
+				<div class="left">
+					<%= render :partial => "shared/logo", :locals => {:after => "management console"} %>
+				</div>
+				<nav>
+					<%= render :partial => 'manage/shared/navigation'%>
+				</nav>
+			</div>
+		</header>
+		
+		<div id="main">
+			<div class="container">
+				<%- unless flash.empty? -%>
+					<div class="flash">
+						<% flash.each do |name, msg| %>
+	        		<%= content_tag :div, msg, :class => "#{name}" %>
+	   				<% end %>
+					</div>
+				<%- end -%>
+				<div class="four columns clearfix">
+					<div class="col span_3">
+						<%= yield %>
+					</div>
+					<div class="col last">
+						<aside>
+							<%= yield :sidebar %>
+						</aside>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<footer>
+			<div class="container">
+				&copy; 2010-<%= Time.now.year %> <%= link_to "Involved", "http://involved.com.au", :target => :blank %> |
+				Driven by <%= link_to "Posterity", "http://github.com/involved", :target => :blank %> |
 				<%= link_to "Manage", manage_posts_path %>
-			</footer>
-    </div>
+			</div>
+		</footer>
+		
   </body>
 </html>

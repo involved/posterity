@@ -1,15 +1,43 @@
 <%= simple_form_for [:manage, @post] do |f| %>
 	<%= f.input :title %>
-	<p>
-		By: <%= @post.author || current_user.to_s %>
-	</p>
-	<%= f.input :tag_list %>
 	<%= f.input :author, :input_html => {:value => @post.author || current_user.to_s}, :as => :hidden %>
-	<%= f.input :content %>
-	<%- if @post.is_published? -%>
-		<%= f.submit "Update" %>
-	<%- else -%>
-		<%= f.submit "Save draft" %>
-		<%= f.submit "Publish", :name => "publish", :input_html => {:class => "button"} %>
-	<%- end -%>
+	<%= f.input :content, :input_html => {:rows => 10} %>
+	<%= f.input :tag_list, :as => :hidden %>
+	<div>
+		<%= link_to "Preview", "#", :class => "button" %>
+		<%- if @post.is_published? -%>
+			<%= f.submit "Update" %>
+		<%- else -%>
+			<%= f.submit "Save draft", :class => "button"%>
+			<%= f.submit "Publish", :name => "publish", :class => "button green" %>
+		<%- end -%>
+	</div>
 <% end %>
+
+<%- content_for :sidebar do -%>
+
+	<div class="widget first">
+		<h2>Tags</h2>
+		<p class="tag_area">
+			<%- if @post.tags.empty? -%>
+				Start adding tags below, separated with a comma.
+			<%- end -%>
+		</p>
+		<p>
+			<%= text_field_tag :tags %>
+		</p>
+	</div>
+	<div class="widget">
+		<h2>Images</h2>
+		<p>
+			No images yet. Click below to start adding images to this post, or select from the list of previous images.
+		</p>
+		<%= link_to "+ Upload image", "#", :class => "button blue"%>
+	</div>
+	<div class="widget">
+		<h2>Recent Images</h2>
+		<p>
+			No images found.
+		</p>
+	</div>
+<%- end -%>

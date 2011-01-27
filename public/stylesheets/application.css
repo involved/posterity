@@ -105,6 +105,17 @@ header .container{
 	margin: 10px 0;
 }
 
+.flash .notice{
+	border: 1px solid #AEA;
+	background: #DFD;
+	padding: 10px 20px;
+	color: #363;	
+	
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
 .flash .alert{
 	border: 1px solid #EAA;
 	background: #FDD;
@@ -137,8 +148,48 @@ header .container{
 	font-size: 44px;
 }
 
+#logo .after{
+	position:relative;
+	bottom: 8px;
+	left: 10px;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
 header #logo{
 	margin-left: 30px;
+}
+
+header nav{
+	padding-top: 0;
+	padding-right: 30px;
+	float:right;
+	font-size: 12px;
+	text-align:right;
+	height: 48px;
+	width: 500px;
+}
+
+header nav .avatar{
+	float:right;
+	margin-left: 20px;
+	width: 48px;
+}
+
+header nav .greeting{
+	padding-top: 8px;
+	font-size: 12px;
+	font-weight: bold;
+	display:block;
+}
+
+header nav .greeting a{
+	font-size: 12px;
+}
+
+header nav a{
+	font-size: 16px;
 }
 
 #logo a{
@@ -197,8 +248,8 @@ form div{
 	margin: 20px 0;
 }
 
-.input.string input, .input.password input{
-	width: 500px;
+.input.text textarea, .input.string input, .input.password input{
+	width: 670px;
 	border: 1px solid #888;
 	font-size: 24px;
 	padding: 4px;
@@ -207,20 +258,34 @@ form div{
 	border-radius: 4px;
 }
 
-input.button{
+.button{
 	color: #FFF;
 	height: 30px;
 	font-weight: bold;
 	text-transform: uppercase;
 	text-shadow: 0px -1px 0px #333;
-	filter: dropshadow(color=#333333,offX=0,offY=1);
-	background: url(/images/posterity/button_blue_sprite.png) repeat-x;
+	filter: dropshadow(color=#333333,offX=0,offY=-1);
+	background: url(/images/posterity/button_sprite.png) repeat-x #555;
 	border: 0;
 	padding: 0 20px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 }
+
+a.button{
+	padding: 7px 20px;
+	text-decoration:none;
+	color: #FFF;
+}
+
+a.button:hover{ background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #555;}
+.button.red{ background: url(/images/posterity/button_sprite.png) repeat-x #F33; }
+a.button.red:hover{ background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #F33;}
+.button.blue{ background: url(/images/posterity/button_sprite.png) repeat-x #55F; }
+a.button.blue:hover{ background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #55F;}
+.button.green{ background: url(/images/posterity/button_sprite.png) repeat-x #393; }
+a.button.green:hover{ background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #393;}
 
 .post{
 	padding: 0 0 10px 0;
@@ -269,6 +334,13 @@ aside .widget{
 	padding: 20px 0;
 }
 
+aside .button{
+	width: 180px;
+	display:block;
+	height: 16px;
+	text-align: center;
+}
+
 aside .widget.first{
 	margin: 59px 0 0 0;
 }
@@ -288,6 +360,10 @@ aside .widget h2{
 	margin-bottom: 10px;
 }
 
+aside .widget form div{
+	margin: 0;
+}
+
 aside .widget form .input{
 	float: left;
 }
@@ -297,13 +373,28 @@ aside .widget form label{
 }
 
 aside .widget form input.text{
-	width: 170px;
-	border-right: 0;
+	width: 160px;
+	padding-right: 10px;
 }
 
 aside .widget form input.button{
+	position:relative;
+	right: 5px;
 	width: 40px;
+	height: 38px;
 	float:left;
+	background: #777;
+	font-size: 24px;
+	padding-left:17px;
+}
+
+aside .widget .stat{
+	display:block;
+	text-transform:uppercase;
+}
+
+aside .widget .stat h2{
+	display:inline;
 }
 
 .pagination .disabled, .pagination .current, .pagination a{
@@ -351,7 +442,56 @@ aside .widget form input.button{
 .left{float:left;}
 .right{float:right;}
 
+/* tables */
 
+th{
+	padding: 6px 10px;
+	text-align: left;
+	border-bottom: 1px solid #CCC;
+}
+
+table{
+	border-bottom: 1px solid #CCC;
+}
+
+td{
+	padding: 6px 10px;
+}
+
+tr.odd{
+	background: #EEE;
+}
+
+th.actions, td.actions{
+	text-align:right;
+	font-size:12px;
+}
+
+td.actions a{
+	background: #DDD;
+	border: 1px solid #999;
+	padding: 2px 8px;
+	color: #999;
+	font-size: 10px;
+	font-weight:bold;
+	text-transform:uppercase;
+	text-decoration: none;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	text-shadow: 0px 1px 0px #FFF;
+	filter: dropshadow(color=#FFFFFF,offX=0,offY=1);
+}
+
+td.actions a:hover{
+	background: #DFD;
+	border: 1px solid #999;
+	color: #999;
+}
+
+td.actions a.delete:hover{
+	background: #FDD;
+}
 
 @media all and (orientation:portrait) { 
   
