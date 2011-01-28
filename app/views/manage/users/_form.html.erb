@@ -2,13 +2,18 @@
 	<%= f.input :first_name %>
 	<%= f.input :last_name %>
 	<%= f.input :email %>
-	<%= f.input :roles %>
+	
+	<%- if current_user.is_su? -%>
+		<%= f.input :roles %>
+	<%- elsif current_user.is_manager? -%>
+		
+	<%- end -%>
 	
 	<%- if @user.new_record? -%>
 		<h2>Password: <%= new_password = ActiveSupport::SecureRandom.hex(3) %></h2>
 		<%= f.input :password, :as => :hidden, :input_html => {:value => new_password} %>
 		<%= f.input :password_confirmation, :as => :hidden, :input_html => { :value => new_password } %>
-	<%- else -%>
+	<%- elsif current_user.is_manager? || @user == current_user -%>
 		<%= f.input :password %>
 		<%= f.input :password_confirmation %>
 	<%- end -%>
