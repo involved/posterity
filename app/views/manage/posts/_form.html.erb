@@ -2,7 +2,7 @@
 	<%= f.input :title %>
 	<%= f.input :author, :input_html => {:value => @post.author || current_user.to_s}, :as => :hidden %>
 	<%= f.input :content, :input_html => {:rows => 10} %>
-	<%= f.input :tag_list, :as => :hidden %>
+	<%= f.input :tag_list, :as => :string %>
 	<div>
 		<%= link_to "Preview", "#", :class => "button" %>
 		<%- if @post.is_published? -%>
@@ -18,13 +18,16 @@
 
 	<div class="widget first">
 		<h2>Tags</h2>
-		<p class="tag_area">
-			<%- if @post.tags.empty? -%>
-				Start adding tags below, separated with a comma.
-			<%- end -%>
-		</p>
 		<p>
-			<%= text_field_tag :tags %>
+			Start adding tags below, separated with a comma.
+		</p>
+		<p class="input string clearfix">
+			<%= text_field_tag :tags, "", :class => "tag_input", :"data-form-target" => "#post_tag_list", :"data-target" => "#tag_area" %>
+		</p>
+		<p id="tag_area" class="tags clearfix">
+			<%- @post.tags.each do |tag| -%>
+				<span class="tag removable"><%= link_to tag.to_s.strip, ujs_func, :"data-form-target" => "#post_tag_list" %></span>
+			<%- end -%>
 		</p>
 	</div>
 	<div class="widget">

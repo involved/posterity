@@ -12,7 +12,7 @@
 			<%= link_to "&rsaquo; read more".html_safe, article_path(:year => post.published_at.year, :month => post.published_at.month, :day => post.published_at.day, :id => post.to_param) %>
 		<%- end -%>
 	</div>
-	<div class="tags">
+	<div class="tags clearfix">
 		<%- post.tags.each do |tag| -%>
 			<span class="tag">
 				<%= link_to tag, tagged_path(CGI.escape(tag.to_s)) %>
