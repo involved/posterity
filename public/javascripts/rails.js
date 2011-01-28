@@ -17,7 +17,7 @@ jQuery(function ($) {
 
             return event.result !== false;
         },
-
+				
         /**
          * Handles execution of remote calls. Provides following callbacks:
          *

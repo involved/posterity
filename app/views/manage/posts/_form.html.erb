@@ -1,12 +1,12 @@
 <%= simple_form_for [:manage, @post] do |f| %>
 	<%= f.input :title %>
-	<%= f.input :author, :input_html => {:value => @post.author || current_user.to_s}, :as => :hidden %>
+	<%= f.input :author, :input_html => {:value => @post.author || current_user.to_s}, :as => :string %>
 	<%= f.input :content, :input_html => {:rows => 10} %>
 	<%= f.input :tag_list, :as => :hidden %>
 	<div>
 		<%= link_to "Preview", "#", :class => "button" %>
 		<%- if @post.is_published? -%>
-			<%= f.submit "Update" %>
+			<%= f.button :submit, "Update", :class => "button green" %>
 		<%- else -%>
 			<%= f.submit "Save draft", :class => "button"%>
 			<%= f.submit "Publish", :name => "publish", :class => "button green" %>
@@ -31,11 +31,8 @@
 		</p>
 	</div>
 	<div class="widget">
-		<h2>Images</h2>
-		<p>
-			No images yet. Click below to start adding images to this post, or select from the list of previous images.
-		</p>
-		<%= link_to "+ Upload image", "#", :class => "button blue"%>
+		<h2>Images</h2>	
+		<%= render :partial => 'manage/attachments/form' %>
 	</div>
 	<div class="widget">
 		<h2>Recent Images</h2>

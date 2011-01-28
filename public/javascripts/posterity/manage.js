@@ -1,6 +1,33 @@
 $(document).ready(function() {
 	bindTagInputs();
+	bindImageUploads();
 });
+
+/* AJAX image uploads */
+function bindImageUploads(){
+	var form = $("form.remote_image_upload");
+	var form_template = $(form.clone());
+	form_template.hide();
+	form.before(form_template);
+	
+	form
+	  .live('ajax:loading', function(xhr) { 
+			$(this).after(form_template.clone().show());
+			//$(this).html("Uploading...");
+		})
+	  
+		.live('ajax:success', function(data, status, xhr) { 
+			/* do nothing */
+		})
+	  
+		.live('ajax:failure', function(xhr, status, error) { 
+			form.html("Upload failed") 
+		})
+	
+	  .live('ajax:complete', function(el, xhr) {
+			$(this).replaceWith(xhr.responseText); 
+		});
+}
 
 /* Handles tag list creation */
 function bindTagInputs(){

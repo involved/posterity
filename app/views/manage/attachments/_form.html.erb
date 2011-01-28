@@ -1,0 +1,4 @@
+<%= simple_form_for [:manage, Attachment.new], :html => {:multipart => true, :class => "remote_image_upload", :'data-type' => 'json'}, :remote => true do |f| %>
+	<%= f.input :image %>
+	<%= f.button :submit, "Upload" %>
+<% end %>

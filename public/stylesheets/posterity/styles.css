@@ -361,13 +361,6 @@ button {  width: auto; overflow: visible; }
 	.tag_4 { font-size: 22px; }
 /* @end */
 
-
-/* @group NFI what this is */
-	.page_details{
-		margin-bottom:20px;
-	}
-/* @end */
-
 /* @group Sidebar */
 	aside .widget{
 		border-top: 1px solid #CCC;
@@ -376,10 +369,15 @@ button {  width: auto; overflow: visible; }
 	}
 
 	aside .button{
-		width: 180px;
+		width: 220px;
 		display:block;
-		height: 16px;
+		
 		text-align: center;
+	}
+	
+	aside a.button{
+		height: 16px;
+		width: 180px;
 	}
 
 	aside .widget.first{
@@ -422,7 +420,7 @@ button {  width: auto; overflow: visible; }
 		padding-right: 10px;
 	}
 
-	aside .widget input.button{
+	aside .widget.search input.button{
 		position:relative;
 		right: 5px;
 		width: 40px;
@@ -445,6 +443,10 @@ button {  width: auto; overflow: visible; }
 
 
 /* @group Pagination */
+	.page_details{
+		margin-bottom:20px;
+	}
+
 	.pagination .disabled, .pagination .current, .pagination a{
 		color: #333;
 		background: #EEE;

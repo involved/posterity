@@ -5,16 +5,19 @@ gem 'rails', '3.0.3'
 gem 'inherited_resources'
 gem 'simple_form'
 gem 'rdiscount'
+gem 'rmagick', '2.13.1'
 gem 'carrierwave'
 gem 'acts-as-taggable-on'
 gem 'friendly_id', '~> 3.2'
 gem 'will_paginate'
 gem 'devise'
 gem 'faker'
+gem 'meta_where'
 
 group :development do
   gem 'nifty-generators'
   gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'remotipart'
 end
 
 

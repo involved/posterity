@@ -1,11 +1,11 @@
 <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" %>
 <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery-1.4.2.js"%3E%3C/script%3E'))</script>
 
-<!-- jQuery Plugins -->
-<%= javascript_include_tag "posterity/manage.js" %>
-
 <!-- Core JS -->
-<%= javascript_include_tag "rails", "application" %>
+<%= javascript_include_tag "rails", "application", "posterity/manage.js" %>
+
+<!-- jQuery Plugins -->
+<%= javascript_include_tag "plugins/jquery.form", "plugins/jquery.remotipart" %>
 
 <!--[if lt IE 7 ]>
   <script src="js/libs/dd_belatedpng.js"></script>

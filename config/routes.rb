@@ -6,6 +6,7 @@ Posterity::Application.routes.draw do
       get 'unpublish'
     end
     resources :users
+    resources :attachments
   end
   
   # posts
