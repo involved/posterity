@@ -25,13 +25,13 @@ module Posterity
         end
 
         def publish
-          @post = Post.find(params[:post_id])
+          @post = Post.with_slug(params[:post_id])
           @post.publish!
           redirect_to manage_posts_url
         end
 
         def unpublish
-          @post = Post.find(params[:post_id])
+          @post = Post.with_slug(params[:post_id])
           @post.draft!
           redirect_to manage_posts_url
         end

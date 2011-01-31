@@ -22,7 +22,7 @@
 			Start adding tags below, separated with a comma.
 		</p>
 		<p class="input string clearfix">
-			<%= text_field_tag :tags, "", :class => "tag_input", :"data-form-target" => "#post_tag_list", :"data-target" => "#tag_area" %>
+			<%= text_field_tag :tags, "", :class => "tag_input", :"data-form-target" => "#post_tags", :"data-target" => "#tag_area" %>
 		</p>
 		<p id="tag_area" class="tags clearfix">
 			<%- @post.tags.each do |tag| -%>
