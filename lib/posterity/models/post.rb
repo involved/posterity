@@ -1,18 +1,39 @@
 module Posterity
   module Models
-    module Post
-      def self.included(base)
-        base.extend(ClassMethods)
-        
-        base.acts_as_taggable
-        base.has_friendly_id :title, :use_slug => true
+    class Post
+      include Mongoid::Document
+      include Mongoid::Timestamps
+      include Mongoid::Slug
+      include Mongoid::Taggable
+      include Mongoid::Search
+    
+      field :title, :type => String
+      field :content, :type => String
+      field :author, :type => String
+      field :published_at, :type => DateTime
+    
+      slug :title
+      tags_separator ','
+      #search_in :tags, :title, :author, :content
 
-        base.scope :drafts, lambda { base.where("published_at IS NULL").order("published_at desc") }
-        base.scope :published, lambda { base.where("published_at <= ?", Time.zone.now).order("published_at desc") }
-
-        base.validates_presence_of :title, :author, :content
-      end
+      validates_presence_of :title 
+      validates_presence_of :author
+      validates_presence_of :content
       
+      class << self
+        def with_slug(slug)
+          first(:conditions => {:slug => slug})
+        end
+        
+        def published
+          where(:published_at => { "$lte" => Time.now }).desc(:published_at)
+        end
+
+        def drafts
+          where(:published_at => nil).desc(:published_at)
+        end
+      end
+        
       def is_published?
         self.published_at != nil
       end
@@ -31,21 +52,19 @@ module Posterity
         self.save!
       end
       
-      module ClassMethods
-        def archive_dates
-          dates = []
-          last_date = nil
-          self.published.each do |post|
-            normalized_post_date = Date.parse("#{post.published_at.year}-#{post.published_at.month}-1")
-            if normalized_post_date != last_date
-              dates << {:date => normalized_post_date, :count => 1}
-              last_date = normalized_post_date
-            else
-              dates.last[:count] += 1
-            end
+      def self.archive_dates
+        dates = []
+        last_date = nil
+        self.published.each do |post|
+          normalized_post_date = Date.parse("#{post.published_at.year}-#{post.published_at.month}-1")
+          if normalized_post_date != last_date
+            dates << {:date => normalized_post_date, :count => 1}
+            last_date = normalized_post_date
+          else
+            dates.last[:count] += 1
           end
-          dates
         end
+        dates
       end
     end
   end

@@ -1,21 +1,24 @@
 module Posterity
   module Models
-    module User
-      
-      def self.included(base)
-        base.devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+    class User
+      include Mongoid::Document
+      include Mongoid::Timestamps
+      include Mongoid::Slug
 
-        base.validates_presence_of :first_name
-        base.validates_presence_of :last_name
-        base.validates_presence_of :email
-      end
+      field :first_name, :type => String
+      field :last_name, :type => String
+      field :roles, :type => String
+      
+      devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+      validates_presence_of :first_name, :last_name, :email
+      slug :first_name, :last_name
       
       def to_s
         "#{first_name} #{last_name}"
       end
 
       def has_role?(named)
-        roles.split(",").include?(named)
+        roles.split(",").include?(named) if roles
       end
 
       def is_su?

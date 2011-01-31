@@ -1,15 +1,20 @@
 module Posterity
   module Models
-    module Attachment
-      def self.included(base)
-        base.extend(ClassMethods)
-        base.mount_uploader :image, ImageUploader
-        base.validates_presence_of :image
-        base.scope :recent, base.order("created_at desc").limit(10)
-      end
+    class Attachment
+      require 'carrierwave/orm/mongoid'
+      include Mongoid::Document
+      include Mongoid::Timestamps
+            
+      field :image, :type => String
       
-      module ClassMethods
-        # nothing
+      validates_presence_of :image
+      mount_uploader :image, ImageUploader
+      
+      
+      class << self
+        def recent
+          desc(:created_at).limit(10)
+        end
       end
     end
   end

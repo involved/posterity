@@ -1,3 +1,2 @@
-class Post < ActiveRecord::Base
-  include Posterity::Models::Post
+class Post < Posterity::Models::Post
 end

@@ -36,6 +36,10 @@ module Posterity
           redirect_to manage_posts_url
         end
 
+        def resource
+          @post = Post.first(:conditions => {:slug => params[:id]})
+        end
+
         def collection
           @drafts = Post.drafts
           @posts = Post.published.paginate :page => params[:page], :per_page => 15

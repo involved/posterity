@@ -6,6 +6,14 @@ module Posterity
           base.extend(ClassMethods)
         end
         
+        def collection
+          @users = User.all
+        end
+        
+        def resource
+          @user = User.first(:conditions => {:slug => params[:id]})
+        end
+        
         module ClassMethods
           
         end

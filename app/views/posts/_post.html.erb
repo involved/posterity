@@ -13,7 +13,7 @@
 		<%- end -%>
 	</div>
 	<div class="tags clearfix">
-		<%- post.tags.each do |tag| -%>
+		<%- post.tags_array.each do |tag| -%>
 			<span class="tag">
 				<%= link_to tag, tagged_path(CGI.escape(tag.to_s)) %>
 			</span>

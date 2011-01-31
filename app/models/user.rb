@@ -1,3 +1,2 @@
-class User < ActiveRecord::Base
-  include Posterity::Models::User
+class User < Posterity::Models::User
 end

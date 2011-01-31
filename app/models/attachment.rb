@@ -1,3 +1,2 @@
-class Attachment < ActiveRecord::Base
-  include Posterity::Models::Attachment 
+class Attachment < Posterity::Models::Attachment
 end

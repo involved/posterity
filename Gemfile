@@ -14,11 +14,23 @@ gem 'will_paginate'
 gem 'devise'
 gem 'faker'
 gem 'meta_where'
+gem 'remotipart'
+  
+# Mongoid and BSON ext for performance
+gem 'mongoid', :git => 'https://github.com/mongoid/mongoid.git'
+gem 'bson_ext', '1.2.0'
+
+# Slugs
+gem 'mongoid_slug', '0.5.1', :require => "mongoid/slug"
+
+# Tags
+gem 'mongoid_taggable', '0.1.2'
+
+# Full-text search
+gem 'mongoid_search', '0.1.2'
 
 group :development do
   gem 'nifty-generators'
-  gem 'sqlite3-ruby', :require => 'sqlite3'
-  gem 'remotipart'
 end
 
 
