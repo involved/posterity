@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
 
+#posterity gems
 gem 'inherited_resources'
 gem 'simple_form'
 gem 'rdiscount'

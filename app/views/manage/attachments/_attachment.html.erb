@@ -1,5 +1,3 @@
 <div class="attachment">
-	Image...
-	<%= image_tag @attachment.image.square.url if @attachment.image && @attachment.image.square && @attachment.image.square.url %><br />
-	<%= @attachment.created_at %>
+	<%= image_tag attachment.image.square.url if attachment.image && attachment.image.square && attachment.image.square.url %>
 </div>

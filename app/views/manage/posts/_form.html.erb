@@ -36,8 +36,8 @@
 	</div>
 	<div class="widget">
 		<h2>Recent Images</h2>
-		<p>
-			No images found.
-		</p>
+		<%- Attachment.recent.each do |attachment| -%>
+			<%= render :partial => 'manage/attachments/attachment', :locals => {:attachment => attachment} %>
+		<%- end -%>
 	</div>
 <%- end -%>

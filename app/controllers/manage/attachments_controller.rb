@@ -3,7 +3,7 @@ class Manage::AttachmentsController < Manage::ManageController
   
   def create
     create! do |success, failure|
-      success.js { render :partial => "attachment" }
+      success.js { render :partial => "attachment", :locals => {:attachment => @attachment} }
       failure.js { "Upload failed" }
     end
   end
