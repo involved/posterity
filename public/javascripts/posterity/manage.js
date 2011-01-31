@@ -1,7 +1,16 @@
 $(document).ready(function() {
 	bindTagInputs();
 	bindImageUploads();
+	bindSubmitOnChange();
 });
+
+function bindSubmitOnChange(){
+	$("*[data-submit-on-change]").live('change', function(){
+		if($(this).val != ""){
+			$($(this).parents("form")).submit();
+		}
+	});
+}
 
 /* AJAX image uploads */
 function bindImageUploads(){
@@ -11,9 +20,10 @@ function bindImageUploads(){
 	form.before(form_template);
 	
 	form
-	  .live('ajax:loading', function(xhr) { 
+	  .live('ajax:loading', function(xhr) {
+			$("*", this).fadeOut(200);
+			$(this).append("<div class=\"image_attachment\"><div class=\"image\"></div><div class=\"actions\">Uploading</div></div>");
 			$(this).after(form_template.clone().show());
-			//$(this).html("Uploading...");
 		})
 	  
 		.live('ajax:success', function(data, status, xhr) { 
