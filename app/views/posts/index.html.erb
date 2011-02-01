@@ -1,7 +1,7 @@
 <h1>News</h1>
 
 <div class="page_details">
-	<%#= page_entries_info(@posts).html_safe %> 
+	<%= page_entries_info(@posts).html_safe %> 
 	<%= "tagged with <strong>#{params[:tag]}</strong>".html_safe if params[:tag] %>
 	<%= "by <strong>#{params[:name].titleize}</strong>".html_safe if params[:name] %>
 </div>
