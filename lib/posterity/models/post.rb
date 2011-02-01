@@ -26,12 +26,34 @@ module Posterity
           first(:conditions => {:slug => slug})
         end
         
+        def tagged_with(tags)
+          any_in(:tags_array => tags.to_a).desc(:published_at)
+        end
+        
         def published
           where(:published_at => { "$lte" => Time.now }).desc(:published_at)
         end
 
         def drafts
           where(:published_at => nil).desc(:published_at)
+        end
+        
+        def published_in(year, month = nil, day = nil)
+          if day
+            starts_on = Time.utc(year.to_i, month.to_i, day.to_i)
+            ends_on = Time.utc(year.to_i, month.to_i, day.to_i + 1)
+          elsif month
+            day = 1
+            starts_on = Time.utc(year.to_i, month.to_i, day.to_i)
+            ends_on = Time.utc(year.to_i, month.to_i + 1, day.to_i)
+          else
+            day = 1
+            month = 1
+            starts_on = Time.utc(year.to_i, month.to_i, day.to_i)
+            ends_on = Time.utc(year.to_i + 1, month.to_i, day.to_i)           
+          end
+                    
+          where(:published_at => { "$gte" => starts_on }).and(:published_at => { "$lt" => ends_on }).desc(:published_at)   
         end
       end
         

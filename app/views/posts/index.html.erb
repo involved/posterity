@@ -29,7 +29,7 @@
 		<div>
 			<%- Post.tags_with_weight.each do |tag| -%>
 				<%- if tag.last > 1 -%>
-					<%= link_to tag.first, ujs_func %>
+					<%= link_to tag.first, tagged_path(:tag => CGI.escape(tag.first)) %>
 				<%- end -%>
 			<%- end -%>
 		</div>
