@@ -26,7 +26,7 @@
 		</p>
 		<p id="tag_area" class="tags clearfix">
 			<%- @post.tags_array.each do |tag| -%>
-				<span class="tag removable"><%= link_to tag.to_s.strip, ujs_func, :"data-form-target" => "#post_tag_list" %></span>
+				<span class="tag removable"><%= link_to tag.to_s.strip, ujs_func, :"data-form-target" => "#post_tags" %></span>
 			<%- end -%>
 		</p>
 	</div>
