@@ -27,15 +27,11 @@
 	<div class="widget">
 		<h2>Popular Tags</h2>
 		<div>
-			<ul>
-				<%- Post.tags_with_weight.each do |tag| -%>
-					<li>af</li>
-					<%= link_to tag.first, tagged_path(CGI.escape(tag.to_s)) %>
+			<%- Post.tags_with_weight.each do |tag| -%>
+				<%- if tag.last > 1 -%>
+					<%= link_to tag.first, ujs_func %>
 				<%- end -%>
-			</ul>
-			<%# tag_cloud(Post.tag_counts_on(:tags), %w(tag_1 tag_2 tag_3 tag_4)) do |tag, css_class| %>
-				<%#= link_to tag.name, tagged_path(CGI.escape(tag.to_s)), :class => css_class if tag.count > 1 %>
-			<%# end %>
+			<%- end -%>
 		</div>
 	</div>
 	
@@ -49,4 +45,4 @@
 			</ul>
 		</div>
 	</div>
-<%- end -%>
+<%- end -%>	

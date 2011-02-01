@@ -14,6 +14,7 @@ module Posterity
     
       slug :title
       tags_separator ','
+      enable_tags_index!
       #search_in :tags, :title, :author, :content
 
       validates_presence_of :title 
