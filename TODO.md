@@ -1,9 +1,4 @@
 # Posterity TODO
-
-* Migrate from active_record/MySQL to mongoid/MongoDB
-* Need libraries for:
-	* Tagging
-	* Slugs
 	
 * Add 'Activity' model for tracking changes
 	* 3 fields: user_name, model name, action
