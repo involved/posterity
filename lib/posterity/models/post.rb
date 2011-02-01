@@ -26,6 +26,10 @@ module Posterity
           first(:conditions => {:slug => slug})
         end
         
+        def tagged_with(tags)
+          published.any_in(:tags_array => tags.to_a)
+        end
+        
         def published
           where(:published_at => { "$lte" => Time.now }).desc(:published_at)
         end
