@@ -130,7 +130,7 @@ DEPENDENCIES
   mongoid!
   mongoid_search (= 0.1.2)
   mongoid_slug (= 0.5.1)
-  mongoid_taggable (= 0.1.2)
+  mongoid_taggable
   nifty-generators
   rails (= 3.0.3)
   rdiscount

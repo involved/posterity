@@ -24,7 +24,7 @@ gem 'bson_ext', '1.2.0'
 gem 'mongoid_slug', '0.5.1', :require => "mongoid/slug"
 
 # Tags
-gem 'mongoid_taggable', '0.1.2'
+gem 'mongoid_taggable'
 
 # Full-text search
 gem 'mongoid_search', '0.1.2'

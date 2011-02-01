@@ -4,8 +4,8 @@ module Posterity
       include Mongoid::Document
       include Mongoid::Timestamps
       include Mongoid::Slug
-      include Mongoid::Taggable
       include Mongoid::Search
+      include Mongoid::Taggable
     
       field :title, :type => String
       field :content, :type => String

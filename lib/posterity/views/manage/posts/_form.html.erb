@@ -25,7 +25,7 @@
 			<%= text_field_tag :tags, "", :class => "tag_input", :"data-form-target" => "#post_tags", :"data-target" => "#tag_area" %>
 		</p>
 		<p id="tag_area" class="tags clearfix">
-			<%- @post.tags.each do |tag| -%>
+			<%- @post.tags_array.each do |tag| -%>
 				<span class="tag removable"><%= link_to tag.to_s.strip, ujs_func, :"data-form-target" => "#post_tag_list" %></span>
 			<%- end -%>
 		</p>
