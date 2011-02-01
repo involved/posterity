@@ -27,7 +27,7 @@ module Posterity
         end
         
         def tagged_with(tags)
-          published.any_in(:tags_array => tags.to_a)
+          any_in(:tags_array => tags.to_a)
         end
         
         def published
@@ -37,6 +37,7 @@ module Posterity
         def drafts
           where(:published_at => nil).desc(:published_at)
         end
+        
       end
         
       def is_published?
