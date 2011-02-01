@@ -66,7 +66,7 @@ input:invalid, textarea:invalid { border-radius: 1px;  -moz-box-shadow: 0px 0px 
 .no-boxshadow input:invalid, 
 .no-boxshadow textarea:invalid { background-color: #f0dddd; }
 
-::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
+::-moz-selection { background: #FF5E99; color:#fff; text-shadow: none; }
 ::selection { background:#FF5E99; color:#fff; text-shadow: none; } 
 a:link { -webkit-tap-highlight-color: #FF5E99; } 
 
@@ -77,34 +77,44 @@ button {  width: auto; overflow: visible; }
 .hidden { display: none; visibility: hidden; } 
 .visuallyhidden { position: absolute !important; clip: rect(1px 1px 1px 1px);  clip: rect(1px, 1px, 1px, 1px); }
 .invisible { visibility: hidden; }
+.clearfix:before, .clearfix:after {  content: "\0020"; display: block; height: 0; visibility: hidden;	 }
+
 .clearfix:before, .clearfix:after {  content: "\0020"; display: block; height: 0; visibility: hidden;	 } 
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
 
 
-/* @group Posterity basic structure */
-	body{
-		background: url(/images/posterity/background.png) repeat-x #E5E5E5;
-		font-family: Tahoma, Arial, Helvetica;
-	}
+/* **************************************************************** */
+/* ************************* POSTERITY **************************** */
+/* **************************************************************** */
 
-	.container, footer{
-		width: 920px;
-		margin: 20px auto 0 auto;
-	}
-	
-	#main .container{	
-		margin: 0 auto;
-		padding: 20px 30px;
-		background: #FAFAFA;
-	}
-	
-	.left{float:left;}
-	.right{float:right;}
+/* @group Posterity basic structure */
+
+body {
+	background: url(/images/posterity/background.png) repeat-x #E5E5E5;
+	font-family: Tahoma, Arial, Helvetica;
+}
+
+.container, 
+footer {
+	width: 920px;
+	margin: 20px auto 0 auto;
+}
+
+#main .container {	
+	margin: 0 auto;
+	padding: 20px 30px;
+	background: #FAFAFA;
+}
+
+.left { float:left; }
+.right { float:right; }
+
 /* @end */
 
+
 /* @group Headings and paragraphs */
-	h1{
+	h1 {
 		font-size:40px;
 		font-weight: normal;
 		border-bottom: 1px solid #CCC;
@@ -112,48 +122,48 @@ button {  width: auto; overflow: visible; }
 		margin: 0 0 20px 0;
 	}
 
-	h2{
+	h2 {
 		font-size: 24px;
 	}
 
-	h1, h2, h3, h4, h5{
+	h1, h2, h3, h4, h5 {
 		font-weight: normal;
 	}
 
-	h1 a, h2 a, h3 a, h4 a, h5 a{
+	h1 a, h2 a, h3 a, h4 a, h5 a {
 		text-decoration: none;
 	}
 
-	p{
+	p {
 		margin: 0 0 15px 0;
 	}
 /* @end */
 
 /* @group Authentication */
-	#login{
+	#login {
 		width: 400px;
 		margin: 50px auto;
 	}
 
-	#login #logo{
+	#login #logo {
 		margin-bottom: 30px;
 	}
 
-	#login .input.string input, #login .input.password input{
+	#login .input.string input, #login .input.password input {
 		width: 400px;
 	}
 
-	#login .forgot_password{
+	#login .forgot_password {
 		margin-top:6px;
 	}
 /* @end */
 
 /* @group Flash messages */
-	.flash{
+	.flash {
 		margin: 10px 0;
 	}
 
-	.flash .notice{
+	.flash .notice {
 		border: 1px solid #AEA;
 		background: #DFD;
 		padding: 10px 20px;
@@ -164,7 +174,7 @@ button {  width: auto; overflow: visible; }
 		border-radius: 4px;
 	}
 
-	.flash .alert{
+	.flash .alert {
 		border: 1px solid #EAA;
 		background: #FDD;
 		padding: 10px 20px;
@@ -177,17 +187,18 @@ button {  width: auto; overflow: visible; }
 /* @end */
 
 /* @group Header */
-	header .container{
+	header .container {
 		width: 980px;
+		display: block;
 		padding: 0 0 20px 0;
 		background: url(/images/posterity/header_background.png) no-repeat left bottom;
 	}
 	
-	#logo{
+	#logo {
 		font-size: 44px;
 	}
 
-	#logo .after{
+	#logo .after {
 		position:relative;
 		bottom: 8px;
 		left: 10px;
@@ -196,11 +207,11 @@ button {  width: auto; overflow: visible; }
 		text-transform: uppercase;
 	}
 
-	header #logo{
+	header #logo {
 		margin-left: 30px;
 	}
 
-	header nav{
+	header nav {
 		padding-top: 0;
 		padding-right: 30px;
 		float:right;
@@ -210,28 +221,28 @@ button {  width: auto; overflow: visible; }
 		width: 500px;
 	}
 
-	header nav .avatar{
+	header nav .avatar {
 		float:right;
 		margin-left: 20px;
 		width: 48px;
 	}
 
-	header nav .greeting{
+	header nav .greeting {
 		padding-top: 8px;
 		font-size: 12px;
 		font-weight: bold;
 		display:block;
 	}
 
-	header nav .greeting a{
+	header nav .greeting a {
 		font-size: 12px;
 	}
 
-	header nav a{
+	header nav a {
 		font-size: 16px;
 	}
 
-	#logo a{
+	#logo a {
 		text-decoration: none;
 		color: #555;
 		text-shadow: 0px 1px 0px #FFF;
@@ -240,7 +251,7 @@ button {  width: auto; overflow: visible; }
 /* @end */
 
 /* @group Footer */
-	footer{
+	footer {
 		font-size: 11px;
 		color: #111;
 		padding-bottom: 30px;
@@ -253,16 +264,16 @@ button {  width: auto; overflow: visible; }
 
 
 /* @group Forms */
-	label{
+	label {
 		display: block;
 		font-weight: bold;
 	}
 
-	form div{
+	form div {
 		margin: 20px 0;
 	}
 
-	.input.text textarea, .input.string input, .input.password input{
+	.input.text textarea, .input.string input, .input.password input {
 		width: 670px;
 		border: 1px solid #888;
 		font-size: 24px;
@@ -274,7 +285,7 @@ button {  width: auto; overflow: visible; }
 /* @end */
 
 /* @group Attachments */
-	.image_attachment{
+	.image_attachment {
 		display:block;
 		padding: 5px;
 		border: 1px solid #999;
@@ -286,7 +297,7 @@ button {  width: auto; overflow: visible; }
 		border-radius: 4px;
 	}
 	
-	.image_attachment .image{
+	.image_attachment .image {
 		border: 1px solid #999;
 		height: 75px;
 		width: 75px;
@@ -295,7 +306,7 @@ button {  width: auto; overflow: visible; }
 		background: url(/images/posterity/activity.gif) no-repeat 50% 50% #EEE;
 	}
 	
-	.image_attachment .actions{
+	.image_attachment .actions {
 		float:left;
 		font-size: 11px;
 		font-weight: bold;
@@ -304,9 +315,10 @@ button {  width: auto; overflow: visible; }
 /* @end */
 
 /* @group Buttons */
-	.button{
+	.button {
 		color: #FFF;
 		height: 30px;
+		font-size: 11px;
 		font-weight: bold;
 		text-transform: uppercase;
 		text-shadow: 0px -1px 0px #333;
@@ -319,45 +331,45 @@ button {  width: auto; overflow: visible; }
 		border-radius: 4px;
 	}
 
-	a.button{
+	a.button {
 		padding: 7px 20px;
 		text-decoration:none;
 		color: #FFF;
 	}
 
-	a.button:hover{ background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #555;}
-	.button.red{ background: url(/images/posterity/button_sprite.png) repeat-x #F33; }
-	a.button.red:hover{ background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #F33;}
-	.button.blue{ background: url(/images/posterity/button_sprite.png) repeat-x #55F; }
-	a.button.blue:hover{ background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #55F;}
-	.button.green{ background: url(/images/posterity/button_sprite.png) repeat-x #393; }
-	a.button.green:hover{ background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #393;}
+	a.button:hover { background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #555;}
+	.button.red { background: url(/images/posterity/button_sprite.png) repeat-x #F33; }
+	a.button.red:hover { background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #F33;}
+	.button.blue { background: url(/images/posterity/button_sprite.png) repeat-x #55F; }
+	a.button.blue:hover { background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #55F;}
+	.button.green { background: url(/images/posterity/button_sprite.png) repeat-x #393; }
+	a.button.green:hover { background: url(/images/posterity/button_sprite.png) repeat-x 0px -30px #393;}
 /* @end */
 
 /* @group Posts */
-	.post{
+	.post {
 		padding: 0 0 10px 0;
 	}
 
-	.post .byline{
+	.post .byline {
 		font-size: 11px;
 		margin: 0 0 20px 0;
 	}
 /* @end */
 
 /* @group Tags */
-	.tags{
+	.tags {
 		margin: 20px 0 10px 0;
 	}
 
-	.tags .tag{
+	.tags .tag {
 		color: #FFF;
 		padding: 0;
 		margin-right: 5px;
 		display: inline;
 	}
 
-	.tags .tag a{
+	.tags .tag a {
 		background: #DDD;
 		border: 1px solid #999;
 		padding: 2px 8px;
@@ -372,15 +384,15 @@ button {  width: auto; overflow: visible; }
 		margin: 0 5px 5px 0;
 	}
 
-	.tags .tag a:hover{
+	.tags .tag a:hover {
 		background: #CCC;
 	}
 	
-	.tags .tag.removable a:hover{
+	.tags .tag.removable a:hover {
 		background: url(/images/posterity/cross_tiny.png) #EEE no-repeat 4px 4px;
 	}
 	
-	.tags .tag.removable a{
+	.tags .tag.removable a {
 		background: url(/images/posterity/cross_tiny.png) #DDD no-repeat 4px 4px;
 		padding-left: 15px;
 	}
@@ -392,65 +404,75 @@ button {  width: auto; overflow: visible; }
 /* @end */
 
 /* @group Sidebar */
-	aside .widget{
+
+aside { }
+
+	aside .widget {
 		border-top: 1px solid #CCC;
 		margin: 10px 0 0 0;
 		padding: 20px 0;
+		position: relative;
 	}
 
-	aside .button{
+	aside .button {
 		width: 220px;
 		display:block;
 		
 		text-align: center;
 	}
 	
-	aside a.button{
+	aside a.button {
 		height: 16px;
 		width: 180px;
 	}
 
-	aside .widget.first{
+	aside .widget.first {
 		margin: 59px 0 0 0;
 	}
 
-	aside .widget ul{
+	aside .widget ul {
 		list-style: none;
 		padding: 0;
 		margin: 0;
 	}
 
-	aside .widget ul li{
+	aside .widget ul li {
 		padding: 0;
 		margin: 0;
 	}
 
-	aside .widget h2{
+	aside .widget h2 {
 		margin-bottom: 10px;
 	}
 
-	aside .widget form div{
+	aside .widget form div {
 		margin: 0;
 	}
 
-	aside .widget .input{
+	aside .widget .input {
 		float: left;
 	}
+	
+	aside .widget .input.file {
+		position: relative;
+		top: 0px;
+		left: 0px;
+	} 
 
-	aside .widget label{
+	aside .widget label {
 		display: none;
 	}
 
-	aside .widget input.text, aside .widget .input.string input{
+	aside .widget input.text, aside .widget .input.string input {
 		width: 210px;
 	}
 	
-	aside .widget input.text, aside .widget.search .input.string input{
+	aside .widget input.text, aside .widget.search .input.string input {
 		width: 160px;
 		padding-right: 10px;
 	}
 
-	aside .widget.search input.button{
+	aside .widget.search input.button {
 		position:relative;
 		right: 5px;
 		width: 40px;
@@ -461,23 +483,24 @@ button {  width: auto; overflow: visible; }
 		padding-left:17px;
 	}
 
-	aside .widget .stat{
+	aside .widget .stat {
 		display:block;
 		text-transform:uppercase;
 	}
 
-	aside .widget .stat h2{
+	aside .widget .stat h2 {
 		display:inline;
 	}
+	
 /* @end */
 
 
 /* @group Pagination */
-	.page_details{
+	.page_details {
 		margin-bottom:20px;
 	}
 
-	.pagination .disabled, .pagination .current, .pagination a{
+	.pagination .disabled, .pagination .current, .pagination a {
 		color: #333;
 		background: #EEE;
 		border: 1px solid #999;
@@ -488,67 +511,67 @@ button {  width: auto; overflow: visible; }
 		border-radius: 2px;
 	}
 
-	.pagination .disabled{
+	.pagination .disabled {
 		color: #CCC;
 		display:none;
 	}
 
-	.pagination a{
+	.pagination a {
 		color: #333;
 		background: #CCC;
 	}
 /* @end */
 
 /* @group Grid/column layouty stuffs */
-	.columns{ width: 920px; }
+	.columns { width: 920px; }
 
-	.columns .col{ float: left; margin-right:10px; }
-	.columns .col.last{ margin: 0; }
+	.columns .col { float: left; margin-right:10px; display: inline-block; }
+	.columns .col.last { margin: 0; }
 
 	.columns.one .col.span_1, 
-	.columns.one .col						{ width: 920px; }
+	.columns.one .col			{ width: 920px; }
 
 	.columns.two .col.span_1, 
-	.columns.two .col						{ width: 450px; }
-	.columns.two .col.span_2		{ width: 920px; }
+	.columns.two .col			{ width: 450px; }
+	.columns.two .col.span_2	{ width: 920px; }
 
 	.columns.three .col.span_1, 
-	.columns.three .col					{ width: 296px; }
-	.columns.three .col.span_2	{ width: 602px; }
-	.columns.three .col.span_3	{ width: 920px; }
+	.columns.three .col			 { width: 296px; }
+	.columns.three .col.span_2	 { width: 602px; }
+	.columns.three .col.span_3	 { width: 920px; }
 
 	.columns.four .col.span_1, 
-	.columns.four .col					{ width: 220px; }
+	.columns.four .col			 	{ width: 220px; }
 	.columns.four .col.span_2		{ width: 450px; }
 	.columns.four .col.span_3		{ width: 680px; }
 	.columns.four .col.span_4		{ width: 920px; }
 /* @end */
 
 /* @group Tables */
-	th{
+	th {
 		padding: 6px 10px;
 		text-align: left;
 		border-bottom: 1px solid #CCC;
 	}
 
-	table{
+	table {
 		border-bottom: 1px solid #CCC;
 	}
 
-	td{
+	td {
 		padding: 6px 10px;
 	}
 
-	tr.odd{
+	tr.odd {
 		background: #EEE;
 	}
 
-	th.actions, td.actions{
+	th.actions, td.actions {
 		text-align:right;
 		font-size:12px;
 	}
 
-	td.actions a{
+	td.actions a {
 		background: #DDD;
 		border: 1px solid #999;
 		padding: 2px 8px;
@@ -564,13 +587,13 @@ button {  width: auto; overflow: visible; }
 		filter: dropshadow(color=#FFFFFF,offX=0,offY=1);
 	}
 
-	td.actions a:hover{
+	td.actions a:hover {
 		background: #DFD;
 		border: 1px solid #999;
 		color: #999;
 	}
 
-	td.actions a.delete:hover{
+	td.actions a.delete:hover {
 		background: #FDD;
 	}
 /* @end */
@@ -600,6 +623,6 @@ button {  width: auto; overflow: visible; }
   tr, img { page-break-inside: avoid; }
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
-  h2, h3{ page-break-after: avoid; }
+  h2, h3 { page-break-after: avoid; }
 }
 

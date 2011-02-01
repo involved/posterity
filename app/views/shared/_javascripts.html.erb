@@ -8,8 +8,8 @@
 <%= javascript_include_tag "plugins/jquery.form", "plugins/jquery.remotipart" %>
 
 <!--[if lt IE 7 ]>
-  <script src="js/libs/dd_belatedpng.js"></script>
-  <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+	<%= javascript_include_tag "libs/dd_belatedpng" %>	
+  <script> DD_belatedPNG.fix('img, .png_bg, header .container, .button'); //fix any <img> or .png_bg background-images </script>
 <![endif]-->
 
 <!-- Google Analytics -->
