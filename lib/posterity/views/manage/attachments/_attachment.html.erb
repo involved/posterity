@@ -3,6 +3,6 @@
 		<%= image_tag attachment.image.square.url if attachment.image && attachment.image.square && attachment.image.square.url %>
 	</div>
 	<div class="actions">
-		<%= link_to "Insert", ujs_func %>
+		<%= link_to "Insert", ujs_func, :"data-insert" => "![photo](#{attachment.image.medium.url})\n\n", :"data-insert-target" => "#post_content" %>
 	</div>
 </div>

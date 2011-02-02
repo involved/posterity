@@ -2,7 +2,16 @@ $(document).ready(function() {
 	bindTagInputs();
 	bindImageUploads();
 	bindSubmitOnChange();
+	bindInserts();
 });
+
+function bindInserts(){
+	$("*[data-insert]").live('click', function(){
+		var insertData = $(this).attr('data-insert');
+		var target = $(this).attr('data-insert-target');
+		$(target).insertAtCaret(insertData);
+	});
+}
 
 function bindSubmitOnChange(){
 	$("*[data-submit-on-change]").live('change', function(){
@@ -82,3 +91,30 @@ function removeTag(){
 	form_target.val(tags.join(","));
 	link.parent('.tag').detach();
 }
+
+// insertAtCaret inserts text at the current cursor location, or over selected text
+$.fn.extend({
+	insertAtCaret: function(myValue){
+	  return this.each(function(i) {
+	    if (document.selection) {
+	      this.focus();
+	      sel = document.selection.createRange();
+	      sel.text = myValue;
+	      this.focus();
+	    }
+	    else if (this.selectionStart || this.selectionStart == '0') {
+	      var startPos = this.selectionStart;
+	      var endPos = this.selectionEnd;
+	      var scrollTop = this.scrollTop;
+	      this.value = this.value.substring(0, startPos)+myValue+this.value.substring(endPos,this.value.length);
+	      this.focus();
+	      this.selectionStart = startPos + myValue.length;
+	      this.selectionEnd = startPos + myValue.length;
+	      this.scrollTop = scrollTop;
+	    } else {
+	      this.value += myValue;
+	      this.focus();
+	    }
+	  })
+	}
+});
