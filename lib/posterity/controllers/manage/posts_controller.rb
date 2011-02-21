@@ -9,7 +9,7 @@ module Posterity
         def create
           create! do |success, failure|
             success.html do
-              resource.publish! if params.has_key?(:publish) && resource.is_draft?
+              @post.publish! if params.has_key?(:publish) && @post.is_draft?
               redirect_to collection_url
             end
           end
