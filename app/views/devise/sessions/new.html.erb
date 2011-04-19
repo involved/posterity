@@ -1,8 +1,0 @@
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-	<%= f.input :email, :required => false %>
-	<%= f.input :password, :required => false %>
-	<%= f.button :submit, "Sign in", :class => "left" %>
-	<span class="forgot_password right">
-		<%= render :partial => "devise/shared/links" %>
-	</span>
-<% end %>
