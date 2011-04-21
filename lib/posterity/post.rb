@@ -1,16 +1,27 @@
 module Posterity
   module Post
-    include Mongoid::Slug
-    include Mongoid::Taggable
-    include Mongoid::Publishable
 
-    field :title
-    field :content
-    field :author
+    def self.included(base)
+      base.send :include, Mongoid::Slug
+      base.send :include, Mongoid::Taggable
+      base.send :include, Mongoid::Publishable
 
-    slug :title
+      base.extend(ClassMethods)
 
-    validates_presence_of :title
-    validates_presence_of :author
+      base.field :title
+      base.field :content
+      base.field :author
+
+      base.slug :title
+
+      base.validates_presence_of :title
+      base.validates_presence_of :author
+    end
+
+    module ClassMethods
+      # Need some scopes here for tagged and archived posts
+      def tagged(tags)
+      end
+    end
   end
 end

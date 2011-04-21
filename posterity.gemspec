@@ -13,6 +13,9 @@ Gem::Specification.new do |s|
   s.description = %q{TODO: Write a gem description}
 
   s.rubyforge_project = "posterity"
+  s.add_dependency 'mongoid_publishable', '1.1.0'
+  s.add_dependency 'mongoid_slug', '0.7.2'
+  s.add_dependency 'mongoid_taggable', '0.1.4'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
