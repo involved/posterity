@@ -11,7 +11,6 @@ class Posterity::PostsController < ApplicationController
       # if params[:month]
       # if params[:day]
       # if params[:written_by]
-
       # posts.paginate(params[:per_page])
 
       instance_variable_set("@#{params[:resources]}", posts)
