@@ -3,7 +3,8 @@ class Posterity::PostsController < ApplicationController
   def index
     if params[:resources] && defined?(params[:resources].classify)
       post_model = Kernel.const_get(params[:resources].classify)
-      posts = post_model.published
+      #posts = post_model.published
+      posts = post_mode.all
 
       # refine criteria, based on supplied params
       # if params[:tags]
