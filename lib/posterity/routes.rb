@@ -1,17 +1,18 @@
 module Posterity
   module Routes
-    def blog_for(posterity_model_name, *args)
+    def blog_for(path, *args)
       options = args.extract_options!
+      options[:resources] ||= path
       options[:per_page] ||= 20
       options[:scope] ||= nil
 
-      get "#{posterity_model_name}" => "posterity/posts#index", :as => posterity_model_name, :posterity_model_name => posterity_model_name, :per_page => options[:per_page], :scope => options[:scope]
-      get "#{posterity_model_name}/:year/:month/:day/:id" => "posterity/posts#index", :as => posterity_model_name.singularize, :scope => options[:scope]
-      get "#{posterity_model_name}/:year/:month/:day" => "posterity/posts#index"
-      get "#{posterity_model_name}/:year/:month" => "posterity/posts#index"
-      get "#{posterity_model_name}/:year" => "posterity/posts#index"
-      get "#{posterity_model_name}/written_by/:author" => "posterity/posts#index"
-      get "#{posterity_model_name}/tagged/:tags" => "posterity/posts#index"
+      get "#{path}" => "posterity/posts#index", :as => path, :resources => options[:resources].to_s, :per_page => options[:per_page], :scope => options[:scope]
+      get "#{path}/:year/:month/:day/:id" => "posterity/posts#show", :as => path.to_s.singularize, :scope => options[:scope]
+      get "#{path}/:year/:month/:day" => "posterity/posts#index"
+      get "#{path}/:year/:month" => "posterity/posts#index"
+      get "#{path}/:year" => "posterity/posts#index"
+      get "#{path}/written_by/:author" => "posterity/posts#index"
+      get "#{path}/tagged/:tags" => "posterity/posts#index"
     end
   end
 end

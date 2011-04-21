@@ -1,8 +1,8 @@
 class Posterity::PostsController < ApplicationController
 
   def index
-    if params[:posterity_model_name] && defined?(params[:posterity_model_name].classify)
-      post_model = Kernel.const_get(params[:posterity_model_name].classify)
+    if params[:resources] && defined?(params[:resources].classify)
+      post_model = Kernel.const_get(params[:resources].classify)
       posts = post_model.published
 
       # refine criteria, based on supplied params
@@ -14,17 +14,17 @@ class Posterity::PostsController < ApplicationController
 
       # posts.paginate(params[:per_page])
 
-      instance_variable_set("@#{params[:posterity_model_name]}", posts)
-    elsif params[:posterity_model_name]
-      throw Posterity::PostModelNotFound.new(params[:posterity_model_name].classify)
+      instance_variable_set("@#{params[:resources]}", posts)
+    elsif params[:resources]
+      throw Posterity::PostModelNotFound.new(params[:resources].classify)
     else
       throw Posterity::PostModelNotSpecified.new
     end
   end
 
   def show
-    post_model = Kernel.const_get(params[:posterity_model_name].classify)
+    post_model = Kernel.const_get(params[:resources].classify)
     posts = post_model.first(:conditions => {:slug => params[:id]})
-    instance_variable_set("@#{params[:posterity_model_name].singularize}", posts)
+    instance_variable_set("@#{params[:resources].singularize}", posts)
   end
 end
