@@ -10,9 +10,10 @@ class Posterity::PostsController < ApplicationController
       # if params[:year]
       # if params[:month]
       # if params[:day]
-      # if params[:written_by]
+      posts = posts.written_by(params[:author]) if params[:author]
+      posts = posts.tagged_with(CGI.unescape(params[:tag])) if params[:tag]
 
-      # posts.paginate(params[:per_page])
+      posts = posts.page(params[:page]) if defined?(Kaminari)
 
       instance_variable_set("@#{params[:resources]}", posts)
       render "#{params[:resources]}/index"

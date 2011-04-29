@@ -3,16 +3,15 @@ module Posterity
     def blog_for(path, *args)
       options = args.extract_options!
       options[:resources] ||= path
-      options[:per_page] ||= 20
       options[:scope] ||= nil
 
-      get "#{path}" => "posterity/posts#index", :as => path, :resources => options[:resources].to_s, :per_page => options[:per_page]
-      get "#{path}/:year/:month/:day/:id" => "posterity/posts#show", :as => path.to_s.singularize
-      get "#{path}/:year/:month/:day" => "posterity/posts#index"
-      get "#{path}/:year/:month" => "posterity/posts#index"
-      get "#{path}/:year" => "posterity/posts#index"
-      get "#{path}/written_by/:author" => "posterity/posts#index"
-      get "#{path}/tagged/:tags" => "posterity/posts#index"
+      match "#{path}" => "posterity/posts#index", :as => path, :resources => options[:resources].to_s
+      match "#{path}/:year/:month/:day/:id" => "posterity/posts#show", :as => path.to_s.singularize, :resources => options[:resources].to_s
+      #get "#{path}/:year/:month/:day" => "posterity/posts#index", :as => path, :resources => options[:resources].to_s
+      #get "#{path}/:year/:month" => "posterity/posts#index", :as => path, :resources => options[:resources].to_s
+      #get "#{path}/:year" => "posterity/posts#index", :as => path, :resources => options[:resources].to_s
+      match "#{path}/written_by/:author" => "posterity/posts#index", :as => "#{path}_written_by", :resources => options[:resources].to_s
+      match "#{path}/tagged/:tag" => "posterity/posts#index", :as => "#{path}_tagged", :resources => options[:resources].to_s
     end
   end
 end
