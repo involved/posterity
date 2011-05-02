@@ -11,7 +11,7 @@ class Posterity::PostsController < ApplicationController
       # if params[:month]
       # if params[:day]
       posts = posts.written_by(params[:author]) if params[:author]
-      posts = posts.tagged_with(CGI.unescape(params[:tag])) if params[:tag]
+      posts = posts.tagged(CGI.unescape(params[:tag])) if params[:tag]
 
       posts = posts.page(params[:page]) if defined?(Kaminari)
 
@@ -28,7 +28,7 @@ class Posterity::PostsController < ApplicationController
     post_model = Kernel.const_get(params[:resources].classify)
     if params[:permalink]
       post = post_model.first(:conditions => {:permalink => params[:permalink]})
-      redirect_to send(:"#{params[:resources].singularize}_path", post.published_at.year, post.published_at.month, post.published_at.day, post.slug)
+      redirect_to :controller => "posterity/posts", :action => "show", :year => post.published_at.year, :month => post.published_at.month, :day => post.published_at.day, :id => post.slug
     else
       posts = post_model.first(:conditions => {:slug => params[:id]})
       instance_variable_set("@#{params[:resources].singularize}", posts)
