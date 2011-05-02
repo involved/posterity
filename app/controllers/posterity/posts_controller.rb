@@ -26,8 +26,13 @@ class Posterity::PostsController < ApplicationController
 
   def show
     post_model = Kernel.const_get(params[:resources].classify)
-    posts = post_model.first(:conditions => {:slug => params[:id]})
-    instance_variable_set("@#{params[:resources].singularize}", posts)
-    render "#{params[:resources]}/show"
+    if params[:permalink]
+      post = post_model.first(:conditions => {:permalink => params[:permalink]})
+      redirect_to send(:"#{params[:resources].singularize}_path", post.published_at.year, post.published_at.month, post.published_at.day, post.slug)
+    else
+      posts = post_model.first(:conditions => {:slug => params[:id]})
+      instance_variable_set("@#{params[:resources].singularize}", posts)
+      render "#{params[:resources]}/show"
+    end
   end
 end
