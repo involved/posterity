@@ -12,7 +12,7 @@ module Posterity
       #get "#{path}/:year" => "posterity/posts#index", :as => path, :resources => options[:resources].to_s
       match "#{path}/written_by/:author" => "posterity/posts#index", :as => "#{path}_written_by", :resources => options[:resources].to_s
       match "#{path}/tagged/:tag" => "posterity/posts#index", :as => "#{path}_tagged", :resources => options[:resources].to_s
-      match "#{path}/permalink/:permalink" => "posterity/posts#show", :as => "#{path}_permalink", :resources => options[:resources].to_s
+      match "#{path}/permalink/:permalink" => "posterity/posts#show", :as => "#{path.to_s.singularize}_permalink", :resources => options[:resources].to_s
     end
   end
 end
