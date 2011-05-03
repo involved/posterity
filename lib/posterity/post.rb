@@ -22,6 +22,8 @@ module Posterity
 
       base.before_save :update_author_param
       base.before_create :generate_permalink!
+
+      # TODO: need indecies for slug, permalink and published_at
     end
 
     module ClassMethods
