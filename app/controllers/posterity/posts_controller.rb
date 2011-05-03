@@ -5,10 +5,7 @@ class Posterity::PostsController < ApplicationController
       post_model = Kernel.const_get(params[:resources].classify)
       posts = post_model.published
 
-      # still ok to filter by date, even when a specific post requested (should help improve performance?)
-      posts = posts.where() if params[:year]
-      # if params[:month]
-      # if params[:day]
+      posts = posts.published_in(params[:year], params[:month], params[:day]) if params[:year]
       posts = posts.written_by(params[:author]) if params[:author]
       posts = posts.tagged(CGI.unescape(params[:tag])) if params[:tag]
 

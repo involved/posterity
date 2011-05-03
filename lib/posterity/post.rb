@@ -48,6 +48,7 @@ module Posterity
           starts_on = Time.utc(year.to_i, month.to_i, day.to_i)
           ends_on = Time.utc(year.to_i + 1, month.to_i, day.to_i)
         end
+        where(:published_at => {"$gte" => starts_on}).and(:published_at => {"$lt" => ends_on}).desc(:published_at)
       end
     end
 
