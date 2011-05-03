@@ -33,6 +33,22 @@ module Posterity
       def written_by(author)
         where(:author_param => author.parameterize)
       end
+
+      def published_in(year, month = nil, day = nil)
+        if day
+          starts_on = Time.utc(year.to_i, month.to_i, day.to_i)
+          ends_on = Time.utc(year.to_i, month.to_i, day.to_i + 1)
+        elsif month
+          day = 1
+          starts_on = Time.utc(year.to_i, month.to_i, day.to_i)
+          ends_on = Time.utc(year.to_i, month.to_i + 1, day.to_i)
+        else
+          day = 1
+          month = 1
+          starts_on = Time.utc(year.to_i, month.to_i, day.to_i)
+          ends_on = Time.utc(year.to_i + 1, month.to_i, day.to_i)
+        end
+      end
     end
 
     module InstanceMethods
