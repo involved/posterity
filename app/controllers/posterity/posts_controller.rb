@@ -27,8 +27,12 @@ class Posterity::PostsController < ApplicationController
       redirect_to :controller => "posterity/posts", :action => "show", :year => post.published_at.year, :month => post.published_at.month, :day => post.published_at.day, :id => post.slug
     else
       posts = post_model.first(:conditions => {:slug => params[:id]})
-      instance_variable_set("@#{params[:resources].singularize}", posts)
-      render "#{params[:resources]}/show"
+      if !posts.nil?
+        instance_variable_set("@#{params[:resources].singularize}", posts)
+        render "#{params[:resources]}/show"
+      else
+        render_404
+      end
     end
   end
 end

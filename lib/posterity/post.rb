@@ -59,7 +59,7 @@ module Posterity
         options[:sentences] ||= 2
         options[:letters] ||= 140
 
-        sentences = self.content.split(".").compact[0...options[:sentences]].map{ |sentence| sentence = sentence.rstrip; sentence += ". " if sentence.length > 0 }
+        sentences = self.content.split(". ").compact[0...options[:sentences]].map{ |sentence| sentence = sentence.rstrip; sentence += ". " if sentence.length > 0 }
         while(sentences.join("").length > options[:letters] && sentences.length > 1) do
           sentences.pop
         end

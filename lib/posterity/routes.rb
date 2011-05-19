@@ -6,7 +6,12 @@ module Posterity
       options[:scope] ||= nil
       options[:controller] ||= 'posterity/posts'
 
-      match "#{path}" => "#{options[:controller]}#index", :as => path, :resources => options[:resources].to_s
+      index_path = path.to_s
+      if index_path == index_path.singularize
+        index_path = "all_#{index_path}"
+      end
+
+      match "#{path}" => "#{options[:controller]}#index", :as => index_path, :resources => options[:resources].to_s
       match "#{path}/:year/:month/:day/:id" => "#{options[:controller]}#show", :as => path.to_s.singularize, :resources => options[:resources].to_s
       match "#{path}/written_by/:author" => "#{options[:controller]}#index", :as => "#{path}_written_by", :resources => options[:resources].to_s
       match "#{path}/tagged/:tag" => "#{options[:controller]}#index", :as => "#{path}_tagged", :resources => options[:resources].to_s
