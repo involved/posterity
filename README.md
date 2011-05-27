@@ -3,6 +3,8 @@
 Posterity is a mongoid model extension that easily allows the
 integration of 'blog-like' behaviours into any mongoid document.
 
+Keep in mind that this is still in early development and there may be things that don't quite work.
+
 
 # Requirements
 
